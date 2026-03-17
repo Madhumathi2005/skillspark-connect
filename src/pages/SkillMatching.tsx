@@ -10,6 +10,7 @@ import { Star, MapPin, Globe, Search, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 
 const SkillMatching = () => {
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [profFilter, setProfFilter] = useState("all");
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { mockMatches } from "@/data/mockData";
 import { Badge } from "@/components/ui/badge";

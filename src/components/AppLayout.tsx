@@ -24,6 +24,7 @@ const navItems = [
   { to: "/calendar", label: "Calendar", icon: CalendarDays },
   { to: "/schedule", label: "Schedule", icon: Clock },
   { to: "/agreements", label: "Agreements", icon: FileText },
+  { to: "/connections", label: "Connections", icon: UserCheck },
   { to: "/settings", label: "Settings", icon: Settings },
 ];
 

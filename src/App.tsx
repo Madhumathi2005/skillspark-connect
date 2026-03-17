@@ -43,6 +43,8 @@ const AppRoutes = () => (
       <Route path="/calendar" element={<CalendarPage />} />
       <Route path="/schedule" element={<Schedule />} />
       <Route path="/agreements" element={<Agreements />} />
+      <Route path="/connections" element={<Connections />} />
+      <Route path="/chat/:partnerId" element={<Chat />} />
       <Route path="/settings" element={<SettingsPage />} />
     </Route>
     <Route path="*" element={<NotFound />} />

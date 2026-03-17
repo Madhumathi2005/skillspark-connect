@@ -5,24 +5,41 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { motion } from "framer-motion";
-import { ArrowLeft, Sparkles } from "lucide-react";
+import { ArrowLeft, Sparkles, Loader2 } from "lucide-react";
+import { toast } from "sonner";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("alex@skillswap.io");
-  const [password, setPassword] = useState("password");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [submitting, setSubmitting] = useState(false);
   const { login, signup } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isLogin) {
-      login(email, password);
-    } else {
-      signup(name, email, password);
+    setSubmitting(true);
+    try {
+      if (isLogin) {
+        const { error } = await login(email, password);
+        if (error) {
+          toast.error(error);
+        } else {
+          navigate("/dashboard");
+        }
+      } else {
+        const { error } = await signup(name, email, password);
+        if (error) {
+          toast.error(error);
+        } else {
+          toast.success("Account created! Check your email to confirm, or sign in now.");
+          setIsLogin(true);
+        }
+      }
+    } finally {
+      setSubmitting(false);
     }
-    navigate("/dashboard");
   };
 
   return (
@@ -86,6 +103,7 @@ const Auth = () => {
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Your full name"
                   className="h-12 rounded-xl"
+                  required
                 />
               </div>
             )}
@@ -98,6 +116,7 @@ const Auth = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
                 className="h-12 rounded-xl"
+                required
               />
             </div>
             <div className="space-y-2">
@@ -109,10 +128,13 @@ const Auth = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 className="h-12 rounded-xl"
+                required
+                minLength={6}
               />
             </div>
 
-            <Button variant="hero" size="xl" className="w-full" type="submit">
+            <Button variant="hero" size="xl" className="w-full" type="submit" disabled={submitting}>
+              {submitting && <Loader2 size={18} className="animate-spin" />}
               {isLogin ? "Sign In" : "Create Account"}
             </Button>
           </form>

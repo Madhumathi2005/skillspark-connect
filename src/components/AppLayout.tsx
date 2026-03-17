@@ -14,7 +14,6 @@ import {
   X,
 } from "lucide-react";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -29,12 +28,12 @@ const navItems = [
 ];
 
 const AppLayout = () => {
-  const { user, logout } = useAuth();
+  const { profile, logout } = useAuth();
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    await logout();
     navigate("/");
   };
 
@@ -71,11 +70,10 @@ const AppLayout = () => {
       <div className="px-3 py-4 border-t border-border">
         <div className="flex items-center gap-3 px-3 py-2 mb-2">
           <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-sm font-semibold text-primary">
-            {user?.avatar}
+            {profile?.avatar_initials || "?"}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-foreground truncate">{user?.name}</p>
-            <p className="text-xs text-muted-foreground truncate">{user?.email}</p>
+            <p className="text-sm font-medium text-foreground truncate">{profile?.full_name || "User"}</p>
           </div>
         </div>
         <button
@@ -91,12 +89,10 @@ const AppLayout = () => {
 
   return (
     <div className="min-h-screen bg-background flex">
-      {/* Desktop sidebar */}
       <aside className="hidden md:flex w-64 border-r border-border bg-card flex-col fixed inset-y-0 left-0 z-30">
         <SidebarContent />
       </aside>
 
-      {/* Mobile header */}
       <div className="md:hidden fixed top-0 left-0 right-0 z-40 bg-card border-b border-border h-14 flex items-center px-4">
         <button onClick={() => setSidebarOpen(true)} className="text-foreground">
           <Menu size={22} />
@@ -104,7 +100,6 @@ const AppLayout = () => {
         <span className="font-display font-semibold text-foreground ml-3">SkillSwap</span>
       </div>
 
-      {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div className="md:hidden fixed inset-0 z-50">
           <div className="absolute inset-0 bg-foreground/30" onClick={() => setSidebarOpen(false)} />
@@ -119,7 +114,6 @@ const AppLayout = () => {
         </div>
       )}
 
-      {/* Main content */}
       <main className="flex-1 md:ml-64 pt-14 md:pt-0">
         <div className="p-6 md:p-8 max-w-6xl mx-auto">
           <Outlet />

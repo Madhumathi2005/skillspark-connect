@@ -17,11 +17,17 @@ import Chat from "./pages/Chat.tsx";
 import SettingsPage from "./pages/SettingsPage.tsx";
 import AppLayout from "./components/AppLayout.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import { Loader2 } from "lucide-react";
 
 const queryClient = new QueryClient();
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, loading } = useAuth();
+  if (loading) return (
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <Loader2 className="animate-spin text-primary" size={32} />
+    </div>
+  );
   if (!isAuthenticated) return <Navigate to="/auth" replace />;
   return <>{children}</>;
 };

@@ -117,7 +117,7 @@ const SkillMatching = () => {
               >
                 Connect
               </Button>
-              <Button variant="outline" size="sm" className="gap-1">
+              <Button variant="outline" size="sm" className="gap-1" onClick={() => navigate(`/chat/${match.id}`)}>
                 <MessageCircle size={14} />
               </Button>
             </div>

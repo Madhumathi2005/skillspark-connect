@@ -14,7 +14,213 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      agreements: {
+        Row: {
+          created_at: string
+          end_date: string
+          id: string
+          partner_id: string
+          sessions_per_week: number
+          start_date: string
+          status: string
+          their_skill: string
+          updated_at: string
+          user_id: string
+          your_skill: string
+        }
+        Insert: {
+          created_at?: string
+          end_date: string
+          id?: string
+          partner_id: string
+          sessions_per_week?: number
+          start_date: string
+          status?: string
+          their_skill: string
+          updated_at?: string
+          user_id: string
+          your_skill: string
+        }
+        Update: {
+          created_at?: string
+          end_date?: string
+          id?: string
+          partner_id?: string
+          sessions_per_week?: number
+          start_date?: string
+          status?: string
+          their_skill?: string
+          updated_at?: string
+          user_id?: string
+          your_skill?: string
+        }
+        Relationships: []
+      }
+      connections: {
+        Row: {
+          created_at: string
+          id: string
+          receiver_id: string
+          sender_id: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          receiver_id: string
+          sender_id: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          receiver_id?: string
+          sender_id?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      messages: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          read: boolean | null
+          receiver_id: string
+          sender_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          read?: boolean | null
+          receiver_id: string
+          sender_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          read?: boolean | null
+          receiver_id?: string
+          sender_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_initials: string
+          bio: string | null
+          created_at: string
+          email_notifications: boolean | null
+          full_name: string
+          hours_learned: number | null
+          hours_taught: number | null
+          id: string
+          language: string | null
+          learning_interests: string[] | null
+          location: string | null
+          match_alerts: boolean | null
+          profile_visibility: string | null
+          rating: number | null
+          session_reminders: boolean | null
+          skills: string[] | null
+          timezone: string | null
+          total_sessions: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_initials?: string
+          bio?: string | null
+          created_at?: string
+          email_notifications?: boolean | null
+          full_name?: string
+          hours_learned?: number | null
+          hours_taught?: number | null
+          id?: string
+          language?: string | null
+          learning_interests?: string[] | null
+          location?: string | null
+          match_alerts?: boolean | null
+          profile_visibility?: string | null
+          rating?: number | null
+          session_reminders?: boolean | null
+          skills?: string[] | null
+          timezone?: string | null
+          total_sessions?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_initials?: string
+          bio?: string | null
+          created_at?: string
+          email_notifications?: boolean | null
+          full_name?: string
+          hours_learned?: number | null
+          hours_taught?: number | null
+          id?: string
+          language?: string | null
+          learning_interests?: string[] | null
+          location?: string | null
+          match_alerts?: boolean | null
+          profile_visibility?: string | null
+          rating?: number | null
+          session_reminders?: boolean | null
+          skills?: string[] | null
+          timezone?: string | null
+          total_sessions?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      sessions: {
+        Row: {
+          created_at: string
+          creator_id: string
+          duration: number
+          id: string
+          partner_id: string
+          session_date: string
+          session_time: string
+          skill: string
+          status: string
+          type: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          creator_id: string
+          duration?: number
+          id?: string
+          partner_id: string
+          session_date: string
+          session_time: string
+          skill: string
+          status?: string
+          type: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          creator_id?: string
+          duration?: number
+          id?: string
+          partner_id?: string
+          session_date?: string
+          session_time?: string
+          skill?: string
+          status?: string
+          type?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

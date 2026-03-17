@@ -12,6 +12,8 @@ import SkillMatching from "./pages/SkillMatching.tsx";
 import CalendarPage from "./pages/CalendarPage.tsx";
 import Schedule from "./pages/Schedule.tsx";
 import Agreements from "./pages/Agreements.tsx";
+import Connections from "./pages/Connections.tsx";
+import Chat from "./pages/Chat.tsx";
 import SettingsPage from "./pages/SettingsPage.tsx";
 import AppLayout from "./components/AppLayout.tsx";
 import NotFound from "./pages/NotFound.tsx";
@@ -41,6 +43,8 @@ const AppRoutes = () => (
       <Route path="/calendar" element={<CalendarPage />} />
       <Route path="/schedule" element={<Schedule />} />
       <Route path="/agreements" element={<Agreements />} />
+      <Route path="/connections" element={<Connections />} />
+      <Route path="/chat/:partnerId" element={<Chat />} />
       <Route path="/settings" element={<SettingsPage />} />
     </Route>
     <Route path="*" element={<NotFound />} />

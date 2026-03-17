@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { mockMatches } from "@/data/mockData";
 import { Badge } from "@/components/ui/badge";
@@ -9,6 +10,7 @@ import { Star, MapPin, Globe, Search, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 
 const SkillMatching = () => {
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [profFilter, setProfFilter] = useState("all");
 
@@ -115,7 +117,7 @@ const SkillMatching = () => {
               >
                 Connect
               </Button>
-              <Button variant="outline" size="sm" className="gap-1">
+              <Button variant="outline" size="sm" className="gap-1" onClick={() => navigate(`/chat/${match.id}`)}>
                 <MessageCircle size={14} />
               </Button>
             </div>

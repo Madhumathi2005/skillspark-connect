@@ -8,6 +8,7 @@ import {
   CalendarDays,
   Clock,
   FileText,
+  UserCheck,
   LogOut,
   Menu,
   X,

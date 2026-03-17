@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -35,8 +36,8 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
-          <Button variant="ghost" size="sm">Log in</Button>
-          <Button variant="hero" size="sm">Get Started</Button>
+          <Link to="/auth"><Button variant="ghost" size="sm">Log in</Button></Link>
+          <Link to="/auth"><Button variant="hero" size="sm">Get Started</Button></Link>
         </div>
 
         <button
@@ -67,8 +68,8 @@ const Navbar = () => {
                 </a>
               ))}
               <div className="flex gap-3 pt-2">
-                <Button variant="ghost" size="sm" className="flex-1">Log in</Button>
-                <Button variant="hero" size="sm" className="flex-1">Get Started</Button>
+                <Link to="/auth" className="flex-1"><Button variant="ghost" size="sm" className="w-full">Log in</Button></Link>
+                <Link to="/auth" className="flex-1"><Button variant="hero" size="sm" className="w-full">Get Started</Button></Link>
               </div>
             </div>
           </motion.div>

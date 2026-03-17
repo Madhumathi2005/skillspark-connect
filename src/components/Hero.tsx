@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import heroIllustration from "@/assets/hero-illustration.png";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -28,13 +29,17 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <Button variant="hero" size="xl">
-                Start Swapping
-                <ArrowRight size={20} />
-              </Button>
-              <Button variant="hero-outline" size="xl">
-                See How It Works
-              </Button>
+              <Link to="/auth">
+                <Button variant="hero" size="xl">
+                  Start Swapping
+                  <ArrowRight size={20} />
+                </Button>
+              </Link>
+              <a href="#how-it-works">
+                <Button variant="hero-outline" size="xl">
+                  See How It Works
+                </Button>
+              </a>
             </div>
 
             <div className="flex items-center gap-6 mt-10">

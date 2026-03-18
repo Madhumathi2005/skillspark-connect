@@ -15,6 +15,7 @@ import Agreements from "./pages/Agreements.tsx";
 import Connections from "./pages/Connections.tsx";
 import Chat from "./pages/Chat.tsx";
 import SettingsPage from "./pages/SettingsPage.tsx";
+import Onboarding from "./pages/Onboarding.tsx";
 import AppLayout from "./components/AppLayout.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import { Loader2 } from "lucide-react";
@@ -36,6 +37,7 @@ const AppRoutes = () => (
   <Routes>
     <Route path="/" element={<Index />} />
     <Route path="/auth" element={<Auth />} />
+    <Route path="/onboarding" element={<ProtectedRoute><Onboarding /></ProtectedRoute>} />
     <Route
       element={
         <ProtectedRoute>

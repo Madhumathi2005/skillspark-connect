@@ -33,8 +33,7 @@ const Auth = () => {
         if (error) {
           toast.error(error);
         } else {
-          toast.success("Account created! Check your email to confirm, or sign in now.");
-          setIsLogin(true);
+          navigate("/onboarding");
         }
       }
     } finally {
